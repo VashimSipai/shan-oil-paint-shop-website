@@ -1,0 +1,1266 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="ShanStyles.css">
+    <title>Paints</title>
+    <style>
+        .iframe-container {
+            background-color: #e0f7fa;
+            max-width: 1320px;
+            margin-top: 120px;
+            text-align: center;
+            color: #00796b;
+        }
+
+        .offer-banner {
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .offer-text {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #1F4E77;
+            border-radius: 50%;
+        }
+
+        .btn {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-outline-primary {
+            color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-outline-secondary {
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-outline-success {
+            color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .filter-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h5 {
+            color: #333;
+        }
+
+        .form-check {
+            margin-bottom: 10px;
+        }
+
+        .form-range {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .filter-container {
+                padding: 10px;
+            }
+        }
+
+        .brand-logo {
+            width: 30px;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .most-popular {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #00bcd4;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 10;
+        }
+
+        .product-card {
+            border: 1px solid #949909;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 520px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .wishlist-icon {
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .wishlist-icon:hover {
+            color: #ff4081;
+        }
+
+        .product-image {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #333;
+            font-weight: bold;
+            background: linear-gradient(to right, #910101, #320781, #0490d6);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .compare-btn {
+            font-size: 0.9rem;
+            margin-top: 15px;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            color: #007bff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .compare-btn:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .list {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .list li {
+            margin-bottom: 5px;
+            color: #555;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                padding: 15px;
+            }
+
+            .product-title {
+                font-size: 1rem;
+            }
+
+            .product-price {
+                font-size: 1.2rem;
+            }
+
+            .compare-btn {
+                font-size: 0.8rem;
+            }
+
+            .product-image {
+                width: 100px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-card {
+                padding: 10px;
+            }
+
+            .product-title {
+                font-size: 0.9rem;
+            }
+
+            .product-price {
+                font-size: 1rem;
+            }
+
+            .compare-btn {
+                font-size: 0.8rem;
+                padding: 5px 10px;
+            }
+
+            .product-image {
+                width: 80px;
+            }
+        }
+
+        h2 {
+            font-weight: bold;
+            background: linear-gradient(to right, #000000, #320781, #d96811, #feb47b);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        #products-container {
+            background-color: #d3ecf1fd;
+            border: 1px solid rgb(0, 90, 0);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .availability {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .availability i {
+            font-size: 1.25rem;
+            color: #3498db;
+        }
+
+        .availability .bi-shop {
+            color: #27ae60;
+        }
+
+        .availability .bi-box-seam {
+            color: #f39c12;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="ShanLogo.png" alt="Logo" height="50" width="auto">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="shan2.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Paints2.html">Paint</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="EnnigOil.html">Engine Oil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Other Products</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userProfileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="user-icon.png" alt="User Profile" width="30" height="30" class="rounded-circle">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userProfileDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-heart"></i> WishList
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-sign-out-alt"></i> Log
+                                    Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="iframe-container">
+        <iframe src="ex2.html" class="custom-iframe" scrolling="no"></iframe>
+    </div>
+    <div class="container mt-4">
+        <div class="card shadow-sm border-0 bg-white">
+            <div class="card-body p-4">
+                <h3 class="text-center mb-4">Exclusive Offers</h3>
+                <div id="offersCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="offer-banner position-relative">
+                                <img src="Royale-Glits-adpts-01.webp" class="img-fluid w-100 rounded"
+                                    alt="20% Off on All Exterior Paints">
+                                <div
+                                    class="offer-text position-absolute bottom-0 start-0 w-100 text-center p-3 bg-light bg-opacity-75 rounded">
+                                    <h4 class="text-dark mb-2">Diwali Offer</h4>
+                                    <a href="#twentyPercentOff" class="btn btn-warning mt-2">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="offer-banner position-relative">
+                                <img src="ba1.jpeg" class="img-fluid w-100 rounded" alt="15% Off on Interior Paints">
+                                <div
+                                    class="offer-text position-absolute bottom-0 start-0 w-100 text-center p-3 bg-light bg-opacity-75 rounded">
+                                    <h4 class="text-dark mb-2">15% Off on Interior Paints</h4>
+                                    <a href="#fifteenPercentOff" class="btn btn-warning mt-2">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#offersCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#offersCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5" id="products-container">
+        <div class="filter-container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <button class="btn btn-outline-primary me-3" data-bs-toggle="collapse"
+                        data-bs-target="#filterOptions">
+                        <i class="bi bi-filter"></i> Filter
+                    </button>
+                    <div class="dropdown d-inline">
+                        <button class="btn btn-outline-secondary dropdown-toggle" id="sortOptions"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-arrow-down-up"></i> Sort
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="sortOptions">
+                            <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+                            <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+                            <li><a class="dropdown-item" href="#">Popularity</a></li>
+                            <li><a class="dropdown-item" href="#">Availability</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-outline-success">
+                        <i class="bi bi-bar-chart"></i> Compare (0)
+                    </button>
+                </div>
+            </div>
+            <div class="collapse mt-3" id="filterOptions">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5 class="fw-bold">Category</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="category" value="interior-paints"
+                                id="wall-paint">
+                            <label class="form-check-label" for="wall-paint">Interior Paints</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="category" value="enamel-paint"
+                                id="enamel-paint">
+                            <label class="form-check-label" for="enamel-paint">Enamel Paint</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="category" value="exterior-paint"
+                                id="exterior-paint">
+                            <label class="form-check-label" for="exterior-paint">Exterior Paint</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="category" value="primer"
+                                id="interior-paint">
+                            <label class="form-check-label" for="interior-paint">Primers</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="fw-bold">Brands</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="brand" value="asian-paints"
+                                id="asian-paints">
+                            <label class="form-check-label" for="asian-paints">
+                                <img src="asian-paints-logo.webp" alt="Asian Paints" class="brand-logo me-1">Asian
+                                Paints
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="brand" value="berger-paints"
+                                id="berger-paints">
+                            <label class="form-check-label" for="berger">
+                                <img src="berger-paints-logo.png" alt="Berger Paints" class="brand-logo me-1">Berger
+                                Paints
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="fw-bold">Price Range (INR)</h5>
+                        <input type="range" class="form-range" min="0" max="2000" value="1000" id="priceRange">
+                        <div class="d-flex justify-content-between mt-1">
+                            <span>₹0</span>
+                            <span>₹2000</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="fw-bold">Class</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="interior-paints-luxury" id="luxury">
+                            <label class="form-check-label" for="classLuxury">Interior Paints Luxury</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="interior-paint-premium" id="premium">
+                            <label class="form-check-label" for="classPremium">Interior Paints Premium</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="interior-paint-Economy" id="economy">
+                            <label class="form-check-label" for="classEconomy">Interior Paints Economy</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end mt-3">
+                    <button class="btn btn-primary">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Interior Wall Paints</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-3" data-category="interior-paints-luxury" data-brand="asian-paints"
+                    data-price="1011.00" onclick="window.location.href='ProductInformation.html'">
+                    <div class="product-card p-3 position-relative text-center v">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-royale-aspira-luxury-emulsion-asian-paints.png"
+                            alt="Luxury Interior Paint" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Royal Aspira</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Water beading technology</li>
+                            <li>Best in class crack bridging</li>
+                            <li>Teflon surface protection</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 1011.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paints-luxury" data-brand="asian-paints"
+                    data-price="892.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="royale-glitz-packshot-asian-paints.png" alt="Royal Glitz"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Royal Glitz</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Ultra sheen finish</li>
+                            <li>Luxury with Teflon</li>
+                            <li>Ideal for dining rooms</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 892.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paints-luxury" data-brand="asian-paints"
+                    data-price="905.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="royale-glitz-ultra-matt.png" alt="Royal Glitz Ultra Matt"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Royal Glitz</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Ultra Matte</li>
+                            <li>Luxury with Teflon</li>
+                            <li>Stain repellen</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 905.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paints-luxury" data-brand="asian-paints"
+                    data-price="829.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-royale-shyne-luxury-emulsion-asian-paints.png"
+                            alt="Royal Glitz Ultra Matt" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Royal Shyne Luxury Emulsion</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Luxurious high sheen</li>
+                            <li>Best is class washability</li>
+                            <li>Long lasting washability</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 829.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paint-premium" data-brand="asian-paints"
+                    data-price="537.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-apcolite-all-protek-matt-packshot-asian-paints.png" alt="Royal Glitz"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Apcolite All Protek Shyne</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Lotus Effect technology</li>
+                            <li>Fire retardancy</li>
+                            <li>Fragrance</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 537.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paint-premium" data-brand="asian-paints"
+                    data-price="500.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-apcolite-advanced-heavy-duty-emulsion-asian-paints.png"
+                            alt="Royal Glitz" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Apcolite Advanced Premium Emulsion</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Advance Stain Guard</li>
+                            <li>Superior Washbility</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 500.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paint-premium" data-brand="asian-paints"
+                    data-price="503.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-apcolite-premium-satin-emulsion-asian-paints.png" alt="Royal Glitz"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Apcolite Premium Satin Emulsion</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Washbility</li>
+                            <li>Stain Guard</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 503.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paint-Economy" data-brand="asian-paints"
+                    data-price="209.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-tractor-emulsion-asian-paints.png" alt="Royal Glitz"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Tractor Emulsion</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Best in Class Washbility</li>
+                            <li>No Shading Effect</li>
+                            <li>Superior Smooth Finish</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 209.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paint-Economy" data-brand="asian-paints"
+                    data-price="162.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-tractor-sparc-asian-paints.png" alt="Royal Glitz"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Tractor Sparc</h5>
+                        <ul class="list text-start ms-3">
+                            <li>1.5x coverage than Distemper</li>
+                            <li>Better Whiteness</li>
+                            <li>Smooth Finish</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 162.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paint-Economy" data-brand="asian-paints"
+                    data-price="79.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="interior-walls-tractor-uno-asian-paints.png" alt="Royal Glitz"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Tractor Emulsion</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Affordable Branded Distemper</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 79.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paints-luxury" data-brand="berger-paints"
+                    data-price="956.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="berger-silk-glamor_0.png.webp" alt="Luxury Interior Paint"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Silk Glamor High Sheen</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Ultra Smooth Finish</li>
+                            <li>Elastomeric Film</li>
+                            <li>Low Smell</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 956.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paints-luxury" data-brand="berger-paints"
+                    data-price="853.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="silk-glamor-matt-can_3.png.webp" alt="silk-glamor-matt-can_3"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Silk Glamor Matt</h5>
+
+                        <ul class="list text-start ms-3">
+                            <li>Rich Matt Finish</li>
+                            <li>Superior Cleanability</li>
+                            <li>Green Pro Certified</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 853.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="interior-paints-luxury" data-brand="berger-paints"
+                    data-price="701.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="silk-glamor-dazzle-can_0.png.webp" alt="Royal Glitz Ultra Matt"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Silk Glamor Dazzle</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Super Hi-Sheen</li>
+                            <li>Superior Durability</li>
+                            <li>Unrivalled Smothne </li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹ 701.00</p>
+                        <p class="small">(Inclusive of all taxes) per Liter</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Exterior Paints</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-3" data-category="exterior-paint" data-brand="berger-paints"
+                    data-price="453.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="exterior-walls-ace-advanced-asian-paints.png" alt="Weatherproof Exterior Paint"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Weatherproof Exterior Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Highly durable</li>
+                            <li>Weather-resistant formula</li>
+                            <li>Great for extreme conditions</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹453.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="exterior-paint" data-brand="asian-paints"
+                    data-price="643.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="exterior-walls-ace-shyne-asian-paints.png" alt="Weatherproof Exterior Paint"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Weatherproof Exterior Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Highly durable</li>
+                            <li>Weather-resistant formula</li>
+                            <li>Great for extreme conditions</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹643.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="exterior-paint" data-brand="asian-paints"
+                    data-price="305.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="exterior-walls-ace-exterior-emulsion-asian-paints.png"
+                            alt="Weatherproof Exterior Paint" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Weatherproof Exterior Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Highly durable</li>
+                            <li>Weather-resistant formula</li>
+                            <li>Great for extreme conditions</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹305.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="exterior-paint" data-brand="asian-paints"
+                    data-price="407.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="exterior-walls-apex-advanced-dust-proof-packshot-asian-paints.png"
+                            alt="Weatherproof Exterior Paint" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Weatherproof Exterior Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Highly durable</li>
+                            <li>Weather-resistant formula</li>
+                            <li>Great for extreme conditions</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹407.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Enamel Paints</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-3" data-category="enamel-paint" data-brand="asian-paints"
+                    data-price="395.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="Enamel-Apcolite.png" alt="Gloss Enamel Paint" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Gloss Enamel Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>High-gloss finish</li>
+                            <li>Durable and easy to clean</li>
+                            <li>Perfect for metal surfaces</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹395.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="enamel-paint" data-brand="asian-paints"
+                    data-price="295.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="Enamel-Tractor.png" alt="Gloss Enamel Paint" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Gloss Enamel Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>High-gloss finish</li>
+                            <li>Durable and easy to clean</li>
+                            <li>Perfect for metal surfaces</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹295.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="enamel-paint" data-brand="berger-paints"
+                    data-price="259.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="Butterfly GP Enamel can(1).png" alt="Gloss Enamel Paint"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Gloss Enamel Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>High-gloss finish</li>
+                            <li>Durable and easy to clean</li>
+                            <li>Perfect for metal surfaces</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹259.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="enamel-paint" data-brand="berger-paints"
+                    data-price="364.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="Luxol PU enamel can(1).png" alt="Gloss Enamel Paint"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">Gloss Enamel Paint</h5>
+                        <ul class="list text-start ms-3">
+                            <li>High-gloss finish</li>
+                            <li>Durable and easy to clean</li>
+                            <li>Perfect for metal surfaces</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹364.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Primers</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-3" data-category="primer" data-brand="berger-paints" data-price="658.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="Imperia Block Primer 384 x 412 (1).png" alt="White Primer"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">White Primer</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Fast-drying</li>
+                            <li>Perfect base for any paint</li>
+                            <li>Excellent adhesion</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹658.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="primer" data-brand="berger-paints" data-price="249.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="imperia amaze can(1).png" alt="White Primer" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">White Primer</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Fast-drying</li>
+                            <li>Perfect base for any paint</li>
+                            <li>Excellent adhesion</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹249.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="primer" data-brand="berger-paints" data-price="201.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="imperia gold can.png" alt="White Primer" class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">White Primer</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Fast-drying</li>
+                            <li>Perfect base for any paint</li>
+                            <li>Excellent adhesion</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹201.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="primer" data-brand="berger-paints" data-price="213.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <span class="most-popular">Most Popular</span>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="BP Anti-Corrosive 1K_300x321 pxl_1.png" alt="White Primer"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">White Primer</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Fast-drying</li>
+                            <li>Perfect base for any paint</li>
+                            <li>Excellent adhesion</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹213.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-shop me-2"></i>
+                            <p class="mb-0">Available at Store</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3" data-category="primer" data-brand="berger-paints" data-price="270.00">
+                    <div class="product-card p-3 position-relative text-center">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <i class="bi bi-heart wishlist-icon"></i>
+                        </div>
+                        <img src="luxol-qd-1k-epoxy-primer-can-PhotoRoom(1).png-PhotoRoom.png" alt="White Primer"
+                            class="product-image mx-auto my-3">
+                        <h5 class="product-title fw-bold">White Primer</h5>
+                        <ul class="list text-start ms-3">
+                            <li>Fast-drying</li>
+                            <li>Perfect base for any paint</li>
+                            <li>Excellent adhesion</li>
+                        </ul>
+                        <p class="product-price fw-bold my-2">MRP ₹270.00</p>
+                        <p class="small">(Inclusive of all taxes)</p>
+                        <div class="availability d-flex align-items-center justify-content-center my-2">
+                            <i class="bi bi-box-seam me-2"></i>
+                            <p class="mb-0">Can be Ordered</p>
+                        </div>
+                        <button class="btn btn-outline-secondary compare-btn">
+                            <i class="bi bi-plus"></i> Compare
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementsByClassName('btn-primary')[0].onclick = function () {
+            const categories = document.getElementsByName('category');
+            const brands = document.getElementsByName('brand');
+            const classLuxury = document.getElementById('luxury');
+            const classPremium = document.getElementById('premium');
+            const classEconomy = document.getElementById('economy');
+            const priceRange = parseFloat(document.getElementById('priceRange').value);
+            const selectedCategories = [];
+            const selectedBrands = [];
+            for (let i = 0; i < categories.length; i++) {
+                if (categories[i].checked) {
+                    selectedCategories.push(categories[i].value);
+                }
+            }
+            for (let i = 0; i < brands.length; i++) {
+                if (brands[i].checked) {
+                    selectedBrands.push(brands[i].value);
+                }
+            }
+            const interiorPaintsSelected = selectedCategories.indexOf('interior-paints') !== -1;
+            const selectedClasses = [];
+            if (classLuxury.checked) selectedClasses.push('interior-paints-luxury');
+            if (classPremium.checked) selectedClasses.push('interior-paint-premium');
+            if (classEconomy.checked) selectedClasses.push('interior-paint-Economy');
+            const productCards = document.getElementsByClassName('product-card');
+            for (let i = 0; i < productCards.length; i++) {
+                const container = productCards[i].closest('.col-md-4');
+                const category = container.getAttribute('data-category');
+                const brand = container.getAttribute('data-brand');
+                const price = parseFloat(container.getAttribute('data-price'));
+                let matchesCategory = true;
+                if (interiorPaintsSelected) {
+                    if (selectedClasses.length > 0) {
+                        matchesCategory = false;
+                        for (let j = 0; j < selectedClasses.length; j++) {
+                            if (category.startsWith(selectedClasses[j])) {
+                                matchesCategory = true;
+                                break;
+                            }
+                        }
+                    } else {
+                        matchesCategory = category.startsWith('interior-paint');
+                    }
+                } else {
+                    matchesCategory = selectedCategories.length === 0 || selectedCategories.indexOf(category) !== -1;
+                }
+                const matchesBrand = selectedBrands.length === 0 || selectedBrands.indexOf(brand) !== -1;
+                const matchesPrice = price <= priceRange;
+                container.style.display = matchesCategory && matchesBrand && matchesPrice ? 'block' : 'none';
+            }
+        };
+        const sortItems = function () {
+            const sortButtons = document.getElementsByClassName('dropdown-item');
+            for (let j = 0; j < sortButtons.length; j++) {
+                sortButtons[j].onclick = function () {
+                    const sortType = this.textContent.trim();
+                    const productRows = document.getElementsByClassName('row g-4');
+                    for (let i = 0; i < productRows.length; i++) {
+                        const row = productRows[i];
+                        const products = Array.from(row.children);
+                        products.sort(function (a, b) {
+                            const priceA = parseFloat(a.getAttribute('data-price'));
+                            const priceB = parseFloat(b.getAttribute('data-price'));
+                            const availabilityA = a.getElementsByClassName('availability')[0].textContent.trim();
+                            const availabilityB = b.getElementsByClassName('availability')[0].textContent.trim();
+                            const isPopularA = a.getElementsByClassName('most-popular').length > 0 ? 1 : 0;
+                            const isPopularB = b.getElementsByClassName('most-popular').length > 0 ? 1 : 0;
+                            if (sortType === 'Price: Low to High') {
+                                return priceA - priceB;
+                            } else if (sortType === 'Price: High to Low') {
+                                return priceB - priceA;
+                            } else if (sortType === 'Availability') {
+                                if (availabilityA === 'Available at Store' && availabilityB !== 'Available at Store') {
+                                    return -1;
+                                } else if (availabilityB === 'Available at Store' && availabilityA !== 'Available at Store') {
+                                    return 1;
+                                }
+                                return 0;
+                            } else if (sortType === 'Popularity') {
+                                return isPopularB - isPopularA;
+                            }
+                            return 0;
+                        });
+                        products.forEach(function (product) {
+                            row.appendChild(product);
+                        });
+                    }
+                };
+            }
+        };
+        sortItems();
+    </script>
+</body>
+
+</html>

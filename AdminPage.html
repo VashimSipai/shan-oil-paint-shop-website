@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shan Traders Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .sidebar {
+            background-color: #1F4E77;
+            min-height: 100vh;
+            color: white;
+            padding-top: 20px;
+            padding-left: 10px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar a .icon {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #ffcc00;
+            color: #1F4E77;
+        }
+        .sidebar .active {
+            background-color: #ffcc00;
+            color: #1F4E77;
+        }
+        .content {
+            padding: 30px;
+            margin-left: 220px;
+        }
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-title {
+            color: #1F4E77;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .btn-custom {
+            background-color: #1F4E77;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 10px 15px;
+        }
+        .btn-custom:hover {
+            background-color: #ffcc00;
+            color: black;
+        }
+        .card-body button {
+            margin-right: 10px;
+        }
+        .table th {
+            background-color: #1F4E77;
+            color: white;
+            text-align: center;
+        }
+        .table td,
+        .table th {
+            vertical-align: middle;
+            text-align: center;
+        }
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                padding-left: 0;
+                padding-top: 10px;
+            }
+            .sidebar a {
+                text-align: center;
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+            .content {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
+        @media (max-width: 576px) {
+            .table-responsive {
+                border: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="ShanLogo.png" alt="Shan Traders Logo" height="50" width="auto">
+            </a>
+            <a class="navbar-brand ms-2" href="#">
+                <i class="fa fa-user-cog"></i> Shan Traders Admin Panel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fa fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-bell"></i> Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar bg-dark text-light">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-3">
+                            <a class="nav-link active text-light" href="#queries-section">
+                                <i class="fa fa-envelope icon me-2"></i> Queries
+                            </a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-light" href="#performance-section">
+                                <i class="fa fa-chart-line icon me-2"></i> Website Performance
+                            </a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-light" href="#products-section">
+                                <i class="fa fa-boxes icon me-2"></i> Manage Products
+                            </a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-light" href="#banners-section">
+                                <i class="fa fa-image icon me-2"></i> Change Banners
+                            </a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-light" href="#logins-section">
+                                <i class="fa fa-users icon me-2"></i> User Logins
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
+                <section id="queries-section" class="mb-5">
+                    <h2>Customer Queries</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-question-circle fa-2x mb-3 text-primary"></i>
+                            <p>Display and respond to customer queries here.</p>
+                            <div class="alert alert-info" role="alert">
+                                <strong>Query from Vashim Sipai:</strong> What is the best paint for exterior walls?
+                                <span class="text-muted float-end">Received: 2 hours ago</span>
+                            </div>
+                            <div class="alert alert-info" role="alert">
+                                <strong>Query from Sahil Sipai:</strong> Do you offer discounts on bulk oil purchases?
+                                <span class="text-muted float-end">Received: 5 hours ago</span>
+                            </div>
+                            <button class="btn btn-custom">
+                                <i class="fa fa-envelope-open"></i> View All Queries
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section id="performance-section" class="mb-5">
+                    <h2>Website Performance</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-chart-line fa-2x mb-3 text-primary"></i>
+                            <p>View website analytics and performance reports.</p>
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <div class="card bg-light text-center">
+                                        <div class="card-body">
+                                            <i class="fa fa-eye fa-2x text-success"></i>
+                                            <h5 class="card-title mt-2">Page Views</h5>
+                                            <p class="card-text">12,345 views</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-light text-center">
+                                        <div class="card-body">
+                                            <i class="fa fa-users fa-2x text-info"></i>
+                                            <h5 class="card-title mt-2">Unique Visitors</h5>
+                                            <p class="card-text">7,890 visitors</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-light text-center">
+                                        <div class="card-body">
+                                            <i class="fa fa-shopping-cart fa-2x text-warning"></i>
+                                            <h5 class="card-title mt-2">Total Inquiries</h5>
+                                            <p class="card-text">1,234 inquiries</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card bg-light text-center">
+                                        <div class="card-body">
+                                            <i class="fa fa-map-marker-alt fa-2x text-danger"></i>
+                                            <h5 class="card-title mt-2">Google Map Visits</h5>
+                                            <p class="card-text">987 visits</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-custom mt-3">
+                                <i class="fa fa-chart-pie"></i> View Detailed Performance
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <section id="products-section" class="mb-5">
+                    <h2>Manage Products</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-boxes fa-2x mb-3 text-primary"></i>
+                            <button class="btn btn-custom mb-3"><i class="fa fa-plus-circle"></i> Add New
+                                Product</button>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Category</th>
+                                        <th>Type</th>
+                                        <th>Brand</th>
+                                        <th>Price</th>
+                                        <th>Availability</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Luxury Emulsion</td>
+                                        <td>Paint</td>
+                                        <td>Interior</td>
+                                        <td>Asian Paints</td>
+                                        <td>₹2500</td>
+                                        <td>In Stock</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Engine Oil B</td>
+                                        <td>Oil</td>
+                                        <td>Synthetic</td>
+                                        <td>Shell</td>
+                                        <td>₹350</td>
+                                        <td>Out of Stock</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Premium Brush Set</td>
+                                        <td>Brush</td>
+                                        <td>Flat Brush</td>
+                                        <td>Berger</td>
+                                        <td>₹150</td>
+                                        <td>In Stock</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>High-Density Roller</td>
+                                        <td>Roller</td>
+                                        <td>9-inch Roller</td>
+                                        <td>Asian Paints</td>
+                                        <td>₹100</td>
+                                        <td>In Stock</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wall Putty</td>
+                                        <td>Putty</td>
+                                        <td>Acrylic Putty</td>
+                                        <td>JK Cement</td>
+                                        <td>₹800</td>
+                                        <td>In Stock</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Universal Primer</td>
+                                        <td>Paint</td>
+                                        <td>Primer</td>
+                                        <td>Nerolac</td>
+                                        <td>₹1200</td>
+                                        <td>Out of Stock</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section id="offers-section" class="mb-5">
+                    <h2>Manage Offers & Discounts</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-tags fa-2x mb-3 text-primary"></i>
+                            <p>Manage active offers, discounts, and promotions. You can add new offers, modify existing
+                                ones, and remove expired promotions.</p>
+                            <button class="btn btn-custom mb-3"><i class="fa fa-plus-circle"></i> Add New Offer</button>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Offer Title</th>
+                                        <th>Discount</th>
+                                        <th>Valid From</th>
+                                        <th>Valid Until</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Winter Paint Sale</td>
+                                        <td>20% Off</td>
+                                        <td>October 15, 2024</td>
+                                        <td>November 30, 2024</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diwali Festival Offer</td>
+                                        <td>30% Off</td>
+                                        <td>October 1, 2024</td>
+                                        <td>October 20, 2024</td>
+                                        <td><span class="badge bg-danger">Expired</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Summer Roller Promotion</td>
+                                        <td>15% Off on Brushes & Rollers</td>
+                                        <td>June 1, 2024</td>
+                                        <td>June 30, 2024</td>
+                                        <td><span class="badge bg-danger">Expired</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section id="banners-section" class="mb-5">
+                    <h2>Manage Homepage Banners</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-image fa-2x mb-3 text-primary"></i>
+                            <p>Update, add, or remove banners displayed on the homepage. Supported formats: JPG, PNG,
+                                GIF.</p>
+                            <button class="btn btn-custom mb-3"><i class="fa fa-upload"></i> Add New Banner</button>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Banner Preview</th>
+                                        <th>Banner Title</th>
+                                        <th>Upload Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="banner1.jpg" alt="Banner 1" class="img-thumbnail" width="150">
+                                        </td>
+                                        <td>Winter Sales Banner</td>
+                                        <td>October 1, 2024</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Edit</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="banner2.jpg" alt="Banner 2" class="img-thumbnail" width="150">
+                                        </td>
+                                        <td>New Product Launch</td>
+                                        <td>September 15, 2024</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Edit</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="banner3.jpg" alt="Banner 3" class="img-thumbnail" width="150">
+                                        </td>
+                                        <td>Diwali Festive Offers</td>
+                                        <td>August 25, 2024</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Edit</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section id="logins-section" class="mb-5">
+                    <h2>Manage User Logins</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-user-lock fa-2x mb-3 text-primary"></i>
+                            <p>View login history and manage user activities on the platform.</p>
+                            <button class="btn btn-custom mb-3"><i class="fa fa-users"></i> Show All Logins</button>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Last Login Date</th>
+                                        <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Vashim</td>
+                                        <td>October 10, 2024</td>
+                                        <td>Admin</td>
+                                        <td>
+                                            <span class="badge bg-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Deactivate</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zuber</td>
+                                        <td>October 8, 2024</td>
+                                        <td>Editor</td>
+                                        <td>
+                                            <span class="badge bg-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i>
+                                                Modify</button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                                                Deactivate</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vandan</td>
+                                        <td>September 25, 2024</td>
+                                        <td>Viewer</td>
+                                        <td>
+                                            <span class="badge bg-danger">Inactive</span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success"><i class="fa fa-user-check"></i>Activate</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

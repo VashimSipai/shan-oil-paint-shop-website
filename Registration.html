@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            position: relative;
+            background:
+                url("11441877.png") repeat 0 0,
+                linear-gradient(135deg, #a8e6cf, #dcedc1, #ffe0b2);
+            background-size: 250px 200px, auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .registration-form {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .registration-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes swing {
+            0% {
+                transform: translateX(300px) rotate(-90deg);
+            }
+
+            25% {
+                transform: translateX(-300px) rotate(90deg);
+            }
+
+            50% {
+                transform: translateX(150px) rotate(-45deg);
+            }
+
+            75% {
+                transform: translateX(-150px) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+        }
+
+        .registration-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .registration-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1F4E77;
+            font-weight: bold;
+            font-size: 32px;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid #dfe7f1;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #d9ff82;
+            box-shadow: 0 0 0 0.2rem rgba(84, 119, 245, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #0e8ede;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #3e5dbb;
+            box-shadow: 0 5px 15px rgba(84, 119, 245, 0.3);
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 120px;
+            border-radius: 50%;
+            border: 3px solid #f0f8ff;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .already-registered {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .already-registered a {
+            color: #5477f5;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .already-registered a:hover {
+            color: #3e5dbb;
+        }
+
+        #string {
+            top: 0px;
+            font-size: 24px;
+            color: #1F4E77;
+            position: relative;
+        }
+
+        #container1 {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            justify-content: top;
+            flex-direction: column;
+            position: relative;
+            transform-origin: top center;
+            animation: swing 3s ease-in-out;
+        }
+
+        .gsi-material-button {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -webkit-appearance: none;
+            background-color: #ffffff;
+            background-image: none;
+            border: 1px solid #1F4E77;
+            border-radius: 50px;
+            box-sizing: border-box;
+            color: #1F4E77;
+            cursor: pointer;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 16px;
+            height: 50px;
+            letter-spacing: 0.5px;
+            outline: none;
+            overflow: hidden;
+            padding: 0 20px;
+            position: relative;
+            text-align: center;
+            transition: background-color .218s, border-color .218s, box-shadow .218s;
+            vertical-align: middle;
+            white-space: nowrap;
+            width: 100%;
+            max-width: 400px;
+            min-width: min-content;
+            margin: 10px 0;
+        }
+
+        .gsi-material-button .gsi-material-button-icon {
+            height: 24px;
+            margin-right: 12px;
+            min-width: 24px;
+            width: 24px;
+        }
+
+        .gsi-material-button .gsi-material-button-content-wrapper {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+        }
+
+        .gsi-material-button .gsi-material-button-contents {
+            flex-grow: 1;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: top;
+        }
+
+        .gsi-material-button .gsi-material-button-state {
+            transition: opacity .218s;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .gsi-material-button:disabled {
+            cursor: default;
+            background-color: #ffffff61;
+            border-color: #1F4E77;
+        }
+
+        .gsi-material-button:disabled .gsi-material-button-contents {
+            opacity: 38%;
+        }
+
+        .gsi-material-button:disabled .gsi-material-button-icon {
+            opacity: 38%;
+        }
+
+        .gsi-material-button:not(:disabled):active .gsi-material-button-state,
+        .gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+            background-color: #1F4E77;
+            opacity: 12%;
+        }
+
+        .gsi-material-button:not(:disabled):hover {
+            box-shadow: 0 1px 4px 0 rgba(60, 64, 67, .30), 0 1px 5px 1px rgba(60, 64, 67, .15);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container1">
+        <svg id="string" width="100" height="150" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="10" r="5" fill="#E8E8E8" />
+            <path d="M 50 10 Q 65 40 50 70 Q 35 40 50 10" fill="none" stroke="#F0F0F0" stroke-width="5"
+                stroke-linecap="round" stroke-dasharray="6, 3" stroke-opacity="1" />
+            <line x1="50" y1="70" x2="50" y2="150" stroke="#F0F0F0" stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="6, 3" stroke-opacity="1" />
+        </svg>
+        <div class="registration-form" id="registrationCard">
+            <img src="ShanLogo.png" alt="Logo" class="logo">
+            <h2>Register</h2>
+
+            <form id="registrationForm" onsubmit="validateForm(); return false;" action="shan2.html">
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="tel" class="form-control" id="mobile" placeholder="Mobile Number" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                        required>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                <button class="gsi-material-button">
+                    <div class="gsi-material-button-state"></div>
+                    <div class="gsi-material-button-content-wrapper">
+                        <div class="gsi-material-button-icon">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
+                                <path fill="#EA4335"
+                                    d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
+                                </path>
+                                <path fill="#4285F4"
+                                    d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
+                                </path>
+                                <path fill="#FBBC05"
+                                    d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
+                                </path>
+                                <path fill="#34A853"
+                                    d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
+                                </path>
+                                <path fill="none" d="M0 0h48v48H0z"></path>
+                            </svg>
+                        </div>
+                        <span class="gsi-material-button-contents">Sign in with Google</span>
+                        <span style="display: none;">Sign in with Google</span>
+                    </div>
+                </button>
+                <div class="already-registered">
+                    <p>Already registered? <a href="Login.html">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function validateForm() {
+        var fullName = document.getElementById('fullName').value.trim();
+        var mobile = document.getElementById('mobile').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+        var errorMessage = '';
+        document.getElementById("nameError").innerHTML = '';
+        document.getElementById("mobileError").innerHTML = '';
+        document.getElementById("emailError").innerHTML = '';
+        document.getElementById("passwordError").innerHTML = '';
+        document.getElementById("confirmPasswordError").innerHTML = '';
+        if (fullName === '' || mobile === '' || email === '' || password === '' || confirmPassword === '') {
+            errorMessage += 'Please fill in all fields.<br>';
+        }
+        if (!/^[A-Za-z\s]+$/.test(fullName)) {
+            errorMessage += 'Full name can only contain letters and spaces.<br>';
+        }
+        if (!/^\d{10}$/.test(mobile)) {
+            errorMessage += 'Mobile number must be exactly 10 digits.<br>';
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorMessage += 'Please enter a valid email address.<br>';
+        }
+        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password)) {
+            errorMessage += 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character.<br>';
+        }
+        if (password !== confirmPassword) {
+            errorMessage += 'Passwords do not match.<br>';
+        }
+    
+        if (errorMessage) {
+            document.getElementById("nameError").innerHTML = errorMessage.replace(/<br>/g, '');
+            return;
+        }
+    }
+    </script>
+</body>
+
+</html>

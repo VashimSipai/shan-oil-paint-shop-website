@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Paint & Oil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f9f9f9;
+        }
+        .product-details-page {
+            padding: 40px 0;
+            background-color: #fff;
+        }
+        .back-arrow {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .back-arrow:hover {
+            color: #007bff;
+        }
+        .back-arrow i {
+            margin-right: 8px;
+        }
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .product-thumbnails img {
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .product-thumbnails img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-info {
+            padding-left: 30px;
+        }
+        .product-title {
+            font-weight: bold;
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .product-price {
+            font-size: 26px;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        .product-description p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+        .btn-purchase {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 40px;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .btn-purchase:hover {
+            background-color: #218838;
+        }
+        .product-specs {
+            margin-top: 30px;
+        }
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        .spec-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .product-reviews {
+            margin-top: 50px;
+        }
+        .review-item {
+            margin-bottom: 30px;
+        }
+        .review-item p {
+            margin-bottom: 5px;
+        }
+        .review-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container product-details-page">
+        <a href="Paints2.html" class="back-arrow">
+            <i class="fas fa-arrow-left"></i> Back to Products
+        </a>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product-image text-center">
+                    <img id="mainProductImage" src="interior-walls-royale-aspira-luxury-emulsion-asian-paints.png" alt="Luxury Interior Paint">
+                    <div class="product-thumbnails d-flex justify-content-center">
+                        <img src="interior-walls-royale-aspira-luxury-emulsion-asian-paints.png" onclick="changeImage(this.src)" alt="Thumbnail 1">
+                        <img src="royale-glitz-packshot-asian-paints.png" onclick="changeImage(this.src)" alt="Thumbnail 2">
+                        <img src="royale-glitz-ultra-matt.png" onclick="changeImage(this.src)" alt="Thumbnail 3">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 product-info">
+                <h1 class="product-title">Royal Aspira Luxury Emulsion</h1>
+                <p class="product-price">MRP ₹ 1,011.00</p>
+                <p class="small">(Inclusive of all taxes) per Liter</p>
+                <div class="product-description">
+                    <p>Experience the finest luxury with Royal Aspira. Featuring water beading technology, best in class crack bridging, and superior Teflon surface protection.</p>
+                </div>
+                <button class="btn btn-purchase">Get Now</button>
+                <div class="product-specs">
+                    <h5>Specifications:</h5>
+                    <ul class="spec-list">
+                        <li><strong>Finish:</strong> High sheen</li>
+                        <li><strong>Coverage:</strong> 10-12 sq.m/L</li>
+                        <li><strong>Drying Time:</strong> 4-6 hours</li>
+                        <li><strong>Durability:</strong> Washable, long-lasting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row product-reviews mt-5">
+            <div class="col-12">
+                <h4>Customer Reviews</h4>
+                <div class="review-item">
+                    <p class="review-author">Vashim Sipai</p>
+                    <p>"Excellent paint, gives a smooth finish, and is long-lasting. Highly recommend!"</p>
+                </div>
+                <div class="review-item">
+                    <p class="review-author">Asif Sipai</p>
+                    <p>"Loved the quality and finish. The sheen is perfect for my living room!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function changeImage(imageSrc) {
+            document.getElementById("mainProductImage").src = imageSrc;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
