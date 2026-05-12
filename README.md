@@ -1,38 +1,54 @@
-# Shan Website Project
+# 🎨 Shan Oil & Paint Shop — Website
 
-Welcome to the **Shan Website Project**, a comprehensive platform designed to showcase various products and services. This project includes several key pages for registration, product display, and administrative functionalities.
+A **static HTML/CSS website** designed for Shan Oil & Paint Shop, built as a college web development project. Features a professional layout with product catalog, about section, and contact information.
 
-## Table of Contents
+---
 
-- [Main Registration Page](Registration.html)
-- [Admin Dashboard](AdminPage.html)
-- [Home Page](shan2.html)
-- [Paints Product Page](Paints2.html)
-- [Engine Oil Product Page](EnginOil.html)
-- [Product Information Page](ProductInformation.html)
-- [Login Page](Login.html)
+## 🛠️ Tech Stack
 
-## Project Overview
+| Layer    | Technology           |
+|----------|----------------------|
+| Structure | HTML5               |
+| Styling  | CSS3, Bootstrap 5.3  |
+| Scripting | Vanilla JavaScript  |
 
-The **Shan Website Project** is a multi-page website designed for seamless user interaction and product browsing. The pages include:
+---
 
-1. **Main Registration Page**: User registration functionality with input validation for secure user onboarding.
-2. **Admin Dashboard**: An admin interface for managing the website's content, users, and products.
-3. **Home Page**: The main landing page showcasing featured products and services.
-4. **Paints Product Page**: A detailed page showcasing different paints available, along with filters and sorting options.
-5. **Engine Oil Product Page**: Display of engine oil products, including specifications and comparisons.
-6. **Product Information Page**: Detailed information on selected products.
-7. **Login Page**: Secure login functionality for users and administrators.
+## ✨ Features
 
-## Technologies Used
+- 🏠 **Home Page** — Hero banner with shop overview
+- 🛒 **Product Catalog** — Oil and paint products display
+- ℹ️ **About Section** — Shop history and information
+- 📞 **Contact Page** — Location map and contact details
+- 📱 **Responsive Design** — Mobile-friendly with Bootstrap grid
 
-- **HTML5**: For structuring the web pages.
-- **CSS3**: For styling and making the website responsive.
-- **JavaScript**: For form validation and interactive elements.
-- **Bootstrap**: For consistent, responsive design.
+---
 
-## How to Run the Project
+## 🚀 Running Locally
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/VashimSipai/MOHAMADVASHIM_92301703055_SHAN-WEBSITE_FINAL.git
+No build step required — just open in a browser:
+
+```bash
+git clone https://github.com/VashimSipai/shan-oil-paint-shop-website.git
+cd shan-oil-paint-shop-website
+open index.html   # macOS
+# or double-click index.html on Windows
+```
+
+Or serve with a local server:
+```bash
+npx serve .
+```
+
+---
+
+## 👤 Author
+
+**Vashim Sipai**  
+GitHub: [@VashimSipai](https://github.com/VashimSipai)
+
+---
+
+## 📄 License
+
+This project was created for academic purposes.
